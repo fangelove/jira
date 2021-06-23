@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
- export const isFalse = (value: any)=>value === 0
+ export const isFalse = (value: unknown)=>value === 0
 const cleanObject = (object: object) => {
   //在一个函数里，改变传入的值是不好的，所以需要拷贝一份
   const result = {...object}
@@ -26,7 +26,7 @@ useEffect(()=> {
 
 
 //写一个防抖的hook
-export const useDebounce = (value:any,delay?:number)=> {
+export const useDebounce = <V>(value:V,delay?:number)=> {
   const [debounceValue,setDebounceValue] = useState(value)
   // let timer;
   // return (...args) => {
