@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 
  export const isFalse = (value)=>value === 0
 const cleanObject = (object) => {
@@ -12,3 +13,35 @@ const cleanObject = (object) => {
   return result
 }
 export default cleanObject
+
+//写一个自定义hook，避免满屏的useEffect
+export const useMount = (callback) => {
+useEffect(()=> {
+  callback()
+
+},[])
+}
+
+
+//写一个防抖的hook
+export const useDebounce = (value,delay=300)=> {
+  const [debounceValue,setDebounceValue] = useState(value)
+  // let timer;
+  // return (...args) => {
+  //   clearTimeout(timer);
+  //   timer = setTimeout(() => { value.apply(this, args); }, delay);
+  // };
+
+  useEffect(()=> {
+    const timeout = setTimeout(()=> {
+      setDebounceValue(value)
+    },delay)
+    //useEffect中的return 是在上次执行完之后执行
+    //一般用来做清理工作  清理上一个定时器
+    return ()=> clearTimeout(timeout)
+
+  },[value,delay])
+
+  return debounceValue
+
+}
