@@ -1,5 +1,18 @@
+export interface IUsers{
+  id:number,
+  name:string
 
- const  SearchPanel= (props)=> {
+}
+interface ISearchPanelProps  {
+  users:IUsers[],
+  params:{
+    name:string,
+    personId:string
+  },
+  setParams(param:ISearchPanelProps['params']):void
+
+}
+ const  SearchPanel= (props:ISearchPanelProps)=> {
   const {params,setParams,users} = props
 
 
