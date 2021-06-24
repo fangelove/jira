@@ -1,5 +1,5 @@
 import { FormEvent } from "react"
-import { useAuth } from "../../context/auth-context"
+import { useAuth } from "../context/auth-context"
 
 const LoginScreen = ()=> {
   const {login,user} = useAuth()
@@ -31,7 +31,7 @@ const LoginScreen = ()=> {
         <input type="password" id='password'/>
 
       </>
-      <button type='submit'>注册</button>
+      <button type='submit'>登录</button>
 
     </form>
   )

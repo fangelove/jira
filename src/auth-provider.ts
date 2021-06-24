@@ -1,7 +1,6 @@
 //定义一些函数，用来操控jwt的token
 //firebase 第三方 auth 服务
 
-import {IUsers} from './screen/project-list/search-panel'
 const localStorageKey = '__auth_provider_token__'
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -34,7 +33,8 @@ export const register = (params:{username:string,password:string})=>{
       'Content-Type':'application/json'
     },
     body:JSON.stringify(params)
-  }).then(res=> res.json()).then(handleUserResponse).catch(Promise.reject)
+  }).then(res=> res.json()).then((res)=>
+  handleUserResponse(res?.user)).catch(Promise.reject)
 }
 
 export const logout = async ()=> window.localStorage.removeItem(localStorageKey)

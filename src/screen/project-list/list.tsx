@@ -19,7 +19,8 @@ interface IListProps {
   users:IUsers[]
 }
 const List = (props:IListProps)=> {
-  const {list,users} = props
+  const {list=[],users} = props
+  console.log(list)
   return(
     <table>
       <thead>
@@ -27,12 +28,12 @@ const List = (props:IListProps)=> {
           <th>名称</th>
           <th>负责人</th>
         </tr>
-        {
-          list.map(item => <tr key={item.id}>
+        {/* {
+          list && list.map(item => <tr key={item.id}>
             <td>{item.name}</td>
             <td>{users.find(i=> i.id === Number(item.personId))?.name || '未知'}</td>
           </tr>)
-        }
+        } */}
       </thead>
     </table>
   )
